@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.ComCtrls, RLReport, RLBarcode, Data.DB,
+  Vcl.ExtCtrls, Vcl.ComCtrls, RLReport, RLBarcode, Data.DB,IniFiles ,
   Datasnap.DBClient;
 
 type
@@ -78,6 +78,7 @@ type
     procedure Bt_ResetClick(Sender: TObject);
     procedure Bt_imprimirClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Bt_AplicarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -91,10 +92,61 @@ implementation
 
 {$R *.dfm}
 
+procedure TF_Principal.Bt_AplicarClick(Sender: TObject);
+var
+	ArquivoINI: TIniFile;
+	DestinoArq:string;
+begin
+
+   try
+      DestinoArq :=ExtractFilePath(Application.ExeName)+'config.txt';
+      ArquivoINI := TIniFile.Create(DestinoArq);
+      ArquivoINI.WriteString('PAGINA','ALTURA',Ed_PaginaAltura.Text);
+      ArquivoINI.WriteString('PAGINA','LARGURA',Ed_PaginaLargura.Text);
+      ArquivoINI.WriteString('PAGINA','TOPO',Ed_PgMarginTop.Text);
+      ArquivoINI.WriteString('PAGINA','RODAPE',Ed_PgMarginBottom.Text);
+      ArquivoINI.WriteString('PAGINA','DIREITA',Ed_PgMarginRigth.Text);
+      ArquivoINI.WriteString('PAGINA','ESQUERDA',Ed_PgMarginLEft.Text);
+      ArquivoINI.WriteString('','','');
+      ArquivoINI.WriteString('ETIQUETA','ALTURA',Ed_EtiquetaAltura.Text);
+      ArquivoINI.WriteString('ETIQUETA','LARGURA',Ed_EtiquetaLargura.Text);
+      ArquivoINI.WriteString('ETIQUETA','COLUNAS',Ed_Colunas.Text);
+      ArquivoINI.WriteString('ETIQUETA','ESPACAMENTO',Ed_Espacamento.Text);
+      ArquivoINI.Free;
+
+      ShowMessage('Configurações aplicadas com sucesso');
+   except on E: Exception do
+   	begin
+      	ShowMessage('Falha'+E.Message);
+   	end;
+   end;
+
+end;
+
 procedure TF_Principal.Bt_imprimirClick(Sender: TObject);
 var
+	ArquivoINI: TIniFile;
 	I:Integer;
+   DestinoArq:string;
 begin
+	//carregando configurações
+   DestinoArq :=ExtractFilePath(Application.ExeName)+'config.txt';
+   ArquivoINI.Free;
+   ArquivoINI := TIniFile.Create(DestinoArq);
+
+   RelEtiqueta.PageSetup.PaperWidth  := StrToInt(ArquivoINI.ReadString('PAGINA','LARGURA',''));
+   RelEtiqueta.PageSetup.PaperHeight := StrToInt(ArquivoINI.ReadString('PAGINA','ALTURA',''));
+//   RelEtiqueta.PageSetup.PaperSize   := fpCustom;
+   RLDetailGrid1.ColCount   			 := StrToInt(ArquivoINI.ReadString('ETIQUETA','COLUNAS',''));
+   RLDetailGrid1.ColSpacing          := StrToInt(ArquivoINI.ReadString('ETIQUETA','ESPACAMENTO',''));
+   RLDetailGrid1.ColWidth            := StrToInt(ArquivoINI.ReadString('ETIQUETA','LARGURA',''));
+   RLDetailGrid1.Height              := StrToInt(ArquivoINI.ReadString('ETIQUETA','ALTURA',''));
+
+
+
+
+
+
    for I := 0 to StrToIntDef(Ed_Qtd.Text,1) do
    begin
       Cds_Produto.Insert;

@@ -24,18 +24,11 @@ object F_Principal: TF_Principal
     Top = 5
     Width = 584
     Height = 361
-    ActivePage = Ts_Config
+    ActivePage = Ts_teste
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 388
-    ExplicitHeight = 295
     object Ts_Config: TTabSheet
       Caption = 'Configura'#231#245'es'
-      ExplicitLeft = 0
-      ExplicitWidth = 566
-      ExplicitHeight = 323
       object Bt_Aplicar: TSpeedButton
         Left = 181
         Top = 284
@@ -43,6 +36,7 @@ object F_Principal: TF_Principal
         Height = 30
         Cursor = crHandPoint
         Caption = 'Aplicar'
+        OnClick = Bt_AplicarClick
       end
       object Bt_Reset: TSpeedButton
         Left = 285
@@ -74,9 +68,6 @@ object F_Principal: TF_Principal
         Padding.Right = 3
         Padding.Bottom = 3
         TabOrder = 0
-        ExplicitLeft = 172
-        ExplicitTop = 13
-        ExplicitWidth = 185
         object Ed_Papel: TEdit
           Left = 5
           Top = 18
@@ -87,7 +78,6 @@ object F_Principal: TF_Principal
           Enabled = False
           TabOrder = 0
           Text = 'fpCustom'
-          ExplicitWidth = 271
         end
       end
       object Pn_Pagina: TGroupBox
@@ -98,9 +88,6 @@ object F_Principal: TF_Principal
         Align = alTop
         Caption = ' P'#225'gina '
         TabOrder = 1
-        ExplicitLeft = 2
-        ExplicitTop = 74
-        ExplicitWidth = 429
         object Label1: TLabel
           Left = 15
           Top = 18
@@ -200,8 +187,6 @@ object F_Principal: TF_Principal
         Align = alTop
         Caption = ' Etiqueta '
         TabOrder = 2
-        ExplicitTop = 83
-        ExplicitWidth = 281
         object Label9: TLabel
           Left = 23
           Top = 23
@@ -267,10 +252,6 @@ object F_Principal: TF_Principal
     object Ts_teste: TTabSheet
       Caption = 'Teste de impress'#227'o'
       ImageIndex = 1
-      ExplicitLeft = 8
-      ExplicitTop = 21
-      ExplicitWidth = 380
-      ExplicitHeight = 267
       object PageControl2: TPageControl
         Left = 0
         Top = 0
@@ -279,12 +260,8 @@ object F_Principal: TF_Principal
         ActivePage = Ts_EtiquetaEstoque
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 4
-        ExplicitWidth = 380
-        ExplicitHeight = 267
         object Ts_EtiquetaEstoque: TTabSheet
           Caption = 'Estoque'
-          ExplicitLeft = 0
           object Label12: TLabel
             Left = 10
             Top = 9
