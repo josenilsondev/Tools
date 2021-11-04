@@ -34,7 +34,7 @@ object F_Principal: TF_Principal
     object Ts_Config: TTabSheet
       Caption = 'Configura'#231#245'es'
       ExplicitLeft = 8
-      ExplicitWidth = 564
+      ExplicitTop = 17
       object Bt_Reset: TSpeedButton
         Left = 305
         Top = 360
@@ -333,8 +333,6 @@ object F_Principal: TF_Principal
     object Ts_teste: TTabSheet
       Caption = 'Dados teste'
       ImageIndex = 1
-      ExplicitWidth = 576
-      ExplicitHeight = 333
       object PageControl2: TPageControl
         Left = 0
         Top = 0
@@ -343,51 +341,47 @@ object F_Principal: TF_Principal
         ActivePage = Ts_EtiquetaEstoque
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 576
-        ExplicitHeight = 333
         object Ts_EtiquetaEstoque: TTabSheet
           Caption = 'Estoque'
-          ExplicitWidth = 568
-          ExplicitHeight = 305
           object Label12: TLabel
             Left = 10
             Top = 9
-            Width = 250
+            Width = 37
             Height = 13
             Caption = 'Codigo:'
           end
           object Label13: TLabel
             Left = 10
             Top = 51
-            Width = 250
+            Width = 38
             Height = 13
             Caption = 'Produto'
           end
           object Label14: TLabel
             Left = 10
             Top = 93
-            Width = 250
+            Width = 29
             Height = 13
             Caption = 'Marca'
           end
           object Label15: TLabel
             Left = 10
             Top = 135
-            Width = 250
+            Width = 52
             Height = 13
             Caption = 'Referencia'
           end
           object Label16: TLabel
             Left = 10
             Top = 177
-            Width = 250
+            Width = 54
             Height = 13
             Caption = 'Localiza'#231#227'o'
           end
           object Label11: TLabel
             Left = 10
             Top = 219
-            Width = 250
+            Width = 119
             Height = 13
             Caption = 'Quantidade de etiquetas'
           end

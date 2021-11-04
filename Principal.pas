@@ -269,7 +269,7 @@ end;
 procedure TF_Principal.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-	if Key = VK_RETURN then
+if Key = VK_RETURN then
    begin
      perform(WM_NEXTDLGCTL,0,0);
 
